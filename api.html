@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias con Mediastack API</title>
+</head>
+<body>
+    <h1>Últimas Noticias sobre Naturaleza</h1>
+
+    <!-- Contenedor donde se mostrarán las noticias -->
+    <div id="noticias"></div>
+
+    <script>
+        // Reemplaza TU_CLAVE_API con la clave API de Mediastack que obtienes al registrarte
+        const apiKey = 'bbc1089c695f73ff6520b313924745b3';
+
+        // URL para hacer la solicitud a Mediastack (filtro por noticias que contengan "natural" en español y límite de 5 noticias)
+        const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&languages=es&keywords=naturaleza,natural&limit=5`;
+
+        // Función para obtener y mostrar las noticias
+        fetch(url)
+            .then(response => response.json())  // Convierte la respuesta a JSON
+            .then(data => {
+                const noticias = data.data;  // Accede al arreglo de noticias
+                const noticiasContainer = document.getElementById('noticias');  // Contenedor donde se mostrarán las noticias
+
+                // Recorre el arreglo de noticias y genera el HTML para cada una
+                noticias.forEach(noticia => {
+                    const div = document.createElement('div');
+                    div.innerHTML = `
+                        <h2>${noticia.title}</h2>
+                        <p>${noticia.description}</p>
+                        <a href="${noticia.url}" target="_blank">Leer más</a>
+                        <hr>
+                    `;
+                    noticiasContainer.appendChild(div);  // Agrega cada noticia al contenedor
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener las noticias:', error);  // Muestra errores en la consola
+            });
+    </script>
+</body>
+</html>
