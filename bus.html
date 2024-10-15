@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Eye - Buscador de Plantas</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">Green Eye</a>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="Tienda.html">Inicio</a></li>
+                    <li><a href="bus.html">Buscar</a></li>
+                    <li><a href="pla.html">Plantas</a></li>
+                    <li><a href="info.html">Acerca de nosotros</a></li>
+                    <li><a href="hon.html">Hongos </a></li>
+                    <li><a href="ins.html">insectos</a></li>
+                    
+
+
+                    
+                    <li>
+                        <a href="#" id="accessibility-toggle">Accesibilidad</a>
+                        <ul id="accessibility-menu" class="submenu" style="display: none;">
+                            <li><button id="increase">Aumentar Letra</button></li>
+                            <li><button id="decrease">Disminuir Letra</button></li>
+                        </ul>
+                    </li>
+                    <li><a href="sesion.html">Iniciar sesión</a></li>   
+                </ul>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="search-page">
+        <h1>Buscador de Plantas</h1>
+        <p>Escribe el nombre de una planta para obtener más información.</p>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar planta..." />
+            <button id="searchBtn">Buscar</button>
+        </div>
+
+        <!-- Aquí se mostrarán los resultados de la búsqueda -->
+        <section id="resultados" class="resultados-container"></section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <h3>Green Eye - Wiki de Plantas</h3>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
