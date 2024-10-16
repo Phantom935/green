@@ -1,152 +1,118 @@
 <!DOCTYPE html>
-<html lang="es">
-    <head>
+    <head lang="es">
+        <title>Mi mercadito</title>
         <meta charset="UTF-8">
-        <title>Wiki de Plantas - Green Eye</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
         <link rel="stylesheet" href="estilo.css">
     </head>
 
     <body>
-        <!-- Encabezado de la página -->
         <header class="header">
             <div class="menu container">
-                <a href="Tienda.html" class="logo">Green Eye</a>
+            <a href="Tienda.html" class="logo">logo</a>
                 <input type="checkbox" id="menu"/>
                 <label for="menu">
+                    <img src="/src/images/images_index/logo.png" class="menu-icono" alt="menu">
+
                 </label>
                 <nav class="navbar">
                     <ul>
-                        <li><a href="Tienda.html">Inicio</a></li>
-                        <li><a href="bus.html">Buscar</a></li>
-                        <li><a href="pla.html">Plantas</a></li>
-                        <li><a href="info.html">Acerca de nosotros</a></li>
-                        <li><a href="hon.html">Hongos </a></li>
-                        <li><a href="ins.html">insectos</a></li>
-                        
-    
-    
-                        
-                        <li>
-                            <a href="#" id="accessibility-toggle">Accesibilidad</a>
-                            <ul id="accessibility-menu" class="submenu" style="display: none;">
-                                <li><button id="increase">Aumentar Letra</button></li>
-                                <li><button id="decrease">Disminuir Letra</button></li>
-                            </ul>
-                        </li>
-                        <li><a href="sesion.html">Iniciar sesión</a></li>   
-                    </ul>
+                        <li><a href="Tienda.html"> Inicio</a></li>
+                        <li><a href=""> Servicios</a></li>
+                        <li><a href="#prod"> Productos</a></li>
+                        <li><a href="info.html"> Acerca de nosotros</a></li>
                     </ul>
                 </nav>
-                
-            </div>
-        </header>
-
-        <!-- Sección Quiénes Somos -->
-        <section class="quienes-somos">
-            <h1>¿Quiénes Somos?</h1>
-            <p>
-                Bienvenidos a <strong>Green Eye</strong>, tu fuente confiable de información sobre plantas. Nos dedicamos a proporcionar conocimientos detallados y actualizados para entusiastas de la jardinería, desde principiantes hasta expertos.
-            </p>
-            <p>
-                Nuestra misión es fomentar el amor por las plantas y ayudar a las personas a crear espacios verdes saludables y vibrantes en sus hogares y comunidades.
-            </p>
-            <p>
-                Comprometidos con la educación y la sostenibilidad, ofrecemos una amplia gama de artículos, guías y recursos para el cuidado de diversas especies de plantas.
-            </p>
-        </section>
-
-        <!-- Sección Destacados -->
-        <section class="oferts container">
-            <div class="ofert-1 b1">
-                <div class="ofert-txt">
-                    <h3>Artículos Detallados</h3>
-                    <p>Información completa sobre el cuidado y mantenimiento de diferentes tipos de plantas.</p>
-                </div>
-            </div>
-
-            <div class="ofert-1 b2">
-                <div class="ofert-txt">
-                    <h3>Guías de Jardinería</h3>
-                    <p>Consejos prácticos para crear y mantener tu propio jardín.</p>
-                </div>
-            </div>
-
-            <div class="ofert-1 b3">
-                <div class="ofert-txt">
-                    <h3>Consejos de Expertos</h3>
-                    <p>Aprende de los mejores con nuestras recomendaciones y trucos profesionales.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección de Productos Destacados (Opcional) -->
-        <section class="oferts container"> 
-            <div class="ofert-1 b1">
-                <div class="ofert-img">
-                    <img src="./img/aloe.jpg" alt="plantas">
-                </div>
-                <div class="ofert-txt">
-                    <h3>¿Tienes problemas? Checa esta alternativa natural</h3>
-                    <a href="pla.html">Leer más</a>
-                </div>
-            </div>
-        
-            <div class="ofert-1 b2">
-                <div class="ofert-img">
-                    <img src="./img/araña.jpeg" alt="insectos y Hongos">
-                </div>
-                <div class="ofert-txt">
-                    <h3> insectos</h3>
-                    <a href="ins.html">Leer más</a>
-                </div>
-            </div>
-        
-            <div class="ofert-1 b3">
-                <div class="ofert-img">
-                    <img src="./img/7.jpeg" alt="plantas">
-                </div>
-                <div class="ofert-txt">
-                    <h3>Tipos de Hongos</h3>
-                    <a href="hon.html">Leer más</a>
-                </div>
-            </div>
-        </section>
-        <!-- Pie de Página -->
-        <footer class="footer">
-            <div class="footer-content container">
-                <!-- Sección de Ubicación -->
-                <div class="ubicacion">
-                    <h3>Ubicación</h3>
-                    <p>Dirección: Av. Verde, Jardín Central, Ciudad Verde, CP 12345</p>
-
-                    <!-- Mapa embebido -->
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.0653306115655!2d-99.0554871!3d19.3803148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fd0614558e4b%3A0x3760847a107a0b9f!2sTecNM%20%7C%20Tecnol%C3%B3gico%20Nacional%20de%20M%C3%A9xico%20Campus%20Iztapalapa!5e0!3m2!1ses!2smx!4v1695386612270!5m2!1ses!2smx" 
-                        width="300" 
-                        height="200" 
-                        class="mapa-ubicacion"
-                        allowfullscreen=""
-                        loading="lazy"
-                        frameborder="0"
-                        title="Mapa de Ubicación">
-                    </iframe> 
-                </div>
-
-                <!-- Sección de Redes Sociales -->
-                <div class="redes-sociales">
-                    <h3>Nuestras Redes Sociales</h3>
+                <div>
                     <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Pinterest</a></li>
+                        <li class="submenu">
+                            <img id="img-carrito" src="imagenes/car.svg" alt="carrito">
+                            <div id="carrito">
+                                <table id="lista-carrito">
+                                    <thead>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <a href="#" id="vaciar-carrito" class="btn3">Vaciar Carrito</a>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
             </div>
-        </footer>
+            </header>
+            <section class="quienes-somos">
+                <h1>¿Quiénes somos?</h1>
+                <p>
+                    Somos una empresa comprometida con nuestra comunidad, enfocada en ofrecer soluciones sencillas, convenientes y accesibles, todo desde la comodidad de tu hogar.
+                </p>
+                <p>
+                    Desde nuestros inicios, hemos tenido un objetivo claro: llevar hasta tu puerta productos de alta calidad al mejor precio.
+                </p>
+                <p>
+                    Nuestro compromiso es contigo y con tu familia, garantizando siempre un servicio cercano y personalizado.
+                </p>
+            </section>
+            
+            <section class="oferts container">
 
-        <!-- Enlace al archivo JavaScript -->
-        <script src="script.js"></script>
-    </body>
+                <div class="ofert-1 b1">
+                    <div class="ofert-txt">
+                        <h3>Calidad Garantizada</h3>
+                     </div>
+                </div>
+    
+                <div class="ofert-1 b2">
+                    <div class="ofert-txt">
+                        <h3>Precios Justos y accesibles</h3>
+                    </div>
+                </div>
+    
+                <div class="ofert-1 b3">
+                    <div class="ofert-txt">
+                        <h3>Servicio cercano y personalizado</h3>
+                    </div>
+                </div>
+            </section>
+    
+
+
+
+
+<footer class="footer">
+    <div class="footer-content container">
+    
+            <div class="ubicacion">
+            <h3>Ubicación</h3>
+            <p>Dirección: Av Telecomunicaciones, Chinam Pac de Juárez, Iztapalapa, 09208 Ciudad de México, CDMX</p>
+
+            <!-- Mapa embebido -->
+            <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.0653306115655!2d-99.0554871!3d19.3803148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fd0614558e4b%3A0x3760847a107a0b9f!2sTecNM%20%7C%20Tecnol%C3%B3gico%20Nacional%20de%20M%C3%A9xico%20Campus%20Iztapalapa!5e0!3m2!1ses!2smx!4v1695386612270!5m2!1ses!2smx" 
+            width="300" 
+            height="200" 
+            class="mapa-ubicacion"
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe> 
+        </div>
+        </div>
+        <div class="link"></div>
+            <h3>Nuestras Redes Sociales</h3>
+            <ul>
+                <li><a href="">Facebook</a></li>
+                <li><a href="">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+
+</footer>
+
+<script src="script.js"> </script>
+</body>
 </html>
