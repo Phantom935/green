@@ -14,96 +14,6 @@ loadMoreBtn.onclick = () => {
     }
 }
 
-// CARRITO
-const carrito = document.getElementById('carrito');
-const elementos1 = document.getElementById('lista-1');
-const lista = document.querySelector('#lista-carrito tbody');
-const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
-const notification = document.getElementById('notification');
-
-let total = 0; // Variable para almacenar el total
-
-cargarEventListeners();
-
-function cargarEventListeners() {
-    elementos1.addEventListener('click', comprarElemento);
-    carrito.addEventListener('click', eliminarElemento);
-    vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
-}
-
-function comprarElemento(e) {
-    e.preventDefault();
-    if (e.target.classList.contains('agregar-carrito')) {
-        const elemento = e.target.closest('.box');
-        leerDatosElemento(elemento);
-    }
-}
-
-function leerDatosElemento(elemento) {
-    const infoElemento = {
-        imagen: elemento.querySelector('img').src,
-        titulo: elemento.querySelector('h3').textContent,
-        precio: elemento.querySelector('.precio').textContent,
-        id: elemento.querySelector('a').getAttribute('data-id')
-    };
-    insertarCarrito(infoElemento);
-}
-
-function insertarCarrito(elemento) {
-    const row = document.createElement('tr');
-    const precio = parseFloat(elemento.precio.replace('$', '').replace(',', '')); // Formato del precio
-    row.innerHTML = `
-        <td> 
-            <img src="${elemento.imagen}" width="100" height="150"> 
-        </td>
-        <td>${elemento.titulo}</td>
-        <td>$${precio.toFixed(2)}</td>
-        <td>
-            <a href="#" class="borrar" data-id="${elemento.id}">X</a>
-        </td>
-    `;
-    lista.appendChild(row);
-
-    // Actualizar el total
-    total += precio;
-    actualizarTotal();
-    mostrarNotificacion(`Agregaste ${elemento.titulo} al carrito`);
-}
-
-function eliminarElemento(e) {
-    e.preventDefault();
-    if (e.target.classList.contains('borrar')) {
-        const elemento = e.target.closest('tr');
-        const precio = parseFloat(elemento.cells[2].textContent.replace('$', '').replace(',', ''));
-        total -= precio; // Restar el precio del total
-        elemento.remove(); // Eliminar la fila
-        actualizarTotal();
-        mostrarNotificacion(`Eliminaste un producto del carrito`);
-    }
-}
-
-function vaciarCarrito() {
-    while (lista.firstChild) {
-        lista.removeChild(lista.firstChild);
-    }
-    total = 0; // Reiniciar total
-    actualizarTotal();
-    mostrarNotificacion(`El carrito ha sido vaciado`);
-}
-
-function mostrarNotificacion(mensaje) {
-    notification.textContent = mensaje;
-    notification.style.display = 'block';
-    setTimeout(() => {
-        notification.style.display = 'none';
-    }, 3000); // Ocultar después de 3 segundos
-}
-
-function actualizarTotal() {
-    const totalElement = document.getElementById('total');
-    totalElement.textContent = `Total: $${total.toFixed(2)}`; // Actualizar el texto del total
-}
-
 // Ajustar el tamaño de la fuente
 const body = document.body;
 let fontSize = 16; // Tamaño de letra inicial
@@ -125,27 +35,103 @@ document.getElementById('accessibility-toggle').addEventListener('click', (e) =>
     submenu.style.display = submenu.style.display === 'none' ? 'block' : 'none';
 });
 
-function mostrarNotificacion(mensaje) {
-    notification.textContent = mensaje;
-    notification.style.display = 'block'; // Mostrar notificación
-    notification.classList.add('show'); // Asegúrate de que tengas estilos CSS para esta clase
-    setTimeout(() => {
-        notification.classList.remove('show'); // Remover la clase de estilo
-        setTimeout(() => {
-            notification.style.display = 'none'; // Ocultar después de 3 segundos
-        }, 500); // Tiempo para desvanecer
-    }, 3000); // Mostrar por 3 segundos
+document.getElementById("searchBtn").addEventListener("click", function () {
+    const searchInput = document.getElementById("searchInput").value;
+    const apiKey = "cwmrfDpbEvz3jxxtLyUlA3oBQEI5hvUqJwSGq6PVoWE"; // Asegúrate de que la API key esté correcta
+    const url = `https://trefle.io/api/v1/plants/search?q=${searchInput}&token=${apiKey}`;
+
+    // Hacer la solicitud a la API
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la red');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data); // Muestra la respuesta en la consola
+            displayResults(data.data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Ocurrió un error al buscar la planta.");
+        });
+});
+
+function displayResults(plants) {
+    const resultadosContainer = document.getElementById("resultados");
+    resultadosContainer.innerHTML = ""; // Limpiar resultados anteriores
+
+    if (plants.length === 0) {
+        resultadosContainer.innerHTML = "<p>No se encontraron plantas con ese nombre.</p>";
+        return;
+    }
+
+    plants.forEach(plant => {
+        const plantInfo = document.createElement("div");
+        plantInfo.classList.add("plant-info");
+        plantInfo.innerHTML = `
+            <h2>${plant.common_name || "Nombre común no disponible"}</h2>
+            <p><strong>Nombre científico:</strong> ${plant.scientific_name}</p>
+            <p><strong>Familia:</strong> ${plant.family}</p>
+            <p><strong>Año:</strong> ${plant.year}</p>
+            <img src="${plant.image_url || 'default_image_url.jpg'}" alt="${plant.common_name}">
+        `;
+        resultadosContainer.appendChild(plantInfo);
+    });
+}
+const apiKey = 'bf69fa3dba144421aef695cbe6722a24';
+const newsContainer = document.getElementById('news-container');
+
+async function fetchNews() {
+    const url = `https://newsapi.org/v2/everything?q=Apple&from=2024-10-13&sortBy=popularity&apiKey=${bf69fa3dba144421aef695cbe6722a24}`;
+  
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+  
+      console.log(data); // Muestra la respuesta de la API en la consola
+  
+      if (data.articles.length > 0) {
+        displayNews(data.articles);
+      } else {
+        newsContainer.innerHTML = '<p>No se encontraron noticias.</p>';
+      }
+    } catch (error) {
+      console.error('Error al obtener las noticias:', error);
+      newsContainer.innerHTML = '<p>Error al cargar las noticias.</p>';
+    }
+  }
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.articles.length > 0) {
+      displayNews(data.articles);
+    } else {
+      newsContainer.innerHTML = '<p>No se encontraron noticias.</p>';
+    }
+  } catch (error) {
+    console.error('Error al obtener las noticias:', error);
+    newsContainer.innerHTML = '<p>Error al cargar las noticias.</p>';
+  }
+
+
+function displayNews(articles) {
+  newsContainer.innerHTML = '';
+
+  articles.forEach(article => {
+    const articleDiv = document.createElement('div');
+    articleDiv.classList.add('testimonial-1');
+    articleDiv.innerHTML = `
+      <p>${article.title}</p>
+      <h4>${article.description || 'Sin descripción disponible.'}</h4>
+      <a href="${article.url}" target="_blank">Leer más</a>
+      <img src="${article.urlToImage || 'https://via.placeholder.com/150'}" alt="Imagen de la noticia">
+    `;
+
+    newsContainer.appendChild(articleDiv);
+  });
 }
 
-// Animacion inicio de sesion
-
-const container = document.querySelector(".container");
-const btnSignIn = document.getElementById("btn-sign-in");
-const btnSignUp = document.getElementById("btn-sign-up");
-
-btnSignIn.addEventListener("click",()=>{
-   container.classList.remove("toggle");
-});
-btnSignUp.addEventListener("click",()=>{
-   container.classList.add("toggle");
-});
+document.addEventListener('DOMContentLoaded', fetchNews);
